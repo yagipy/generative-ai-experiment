@@ -1,0 +1,21 @@
+services:
+  webapp:
+    build:
+      context: python/webapp
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    volumes:
+      - ./python/webapp:/python/webapp
+    env_file:
+      - .env
+  notebook:
+    build:
+      context: notebook
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    volumes:
+      - ./notebook/work:/home/jovyan/work
+    env_file:
+      - .env
